@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="lutasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Lutador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exp" Type="float" />
+          <Property Name="Nivel" Type="int" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="255" />
+          <Property Name="Universo" Type="nvarchar" MaxLength="255" />
+          <Property Name="Autor" Type="nvarchar" MaxLength="255" />
+          <Property Name="Portrait" Type="nvarchar" MaxLength="255" />
+          <Property Name="Stand" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Partida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPerdedor" Type="int" />
+          <Property Name="IdVencedor" Type="int" />
+          <Property Name="DataPartida" Type="datetime2" Precision="7" />
+          <Property Name="IdLutadorCasa" Type="int" />
+          <Property Name="IdLutadorVisitante" Type="int" />
+          <Property Name="PontosVencedor" Type="int" />
+          <Property Name="PontosPerdedor" Type="int" />
+        </EntityType>
+        <EntityContainer Name="lutasModelStoreContainer">
+          <EntitySet Name="Lutador" EntityType="Self.Lutador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partida" EntityType="Self.Partida" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="lutasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Lutador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exp" Type="Double" />
+          <Property Name="Nivel" Type="Int32" />
+          <Property Name="Nome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Universo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Autor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Portrait" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Stand" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Partida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPerdedor" Type="Int32" />
+          <Property Name="IdVencedor" Type="Int32" />
+          <Property Name="DataPartida" Type="DateTime" Precision="7" />
+          <Property Name="IdLutadorCasa" Type="Int32" />
+          <Property Name="IdLutadorVisitante" Type="Int32" />
+          <Property Name="PontosVencedor" Type="Int32" />
+          <Property Name="PontosPerdedor" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="lutasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Lutador" EntityType="Self.Lutador" />
+          <EntitySet Name="Partida" EntityType="Self.Partida" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="lutasModelStoreContainer" CdmEntityContainer="lutasEntities">
+          <EntitySetMapping Name="Lutador">
+            <EntityTypeMapping TypeName="lutasModel.Lutador">
+              <MappingFragment StoreEntitySet="Lutador">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Exp" ColumnName="Exp" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Universo" ColumnName="Universo" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="Portrait" ColumnName="Portrait" />
+                <ScalarProperty Name="Stand" ColumnName="Stand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partida">
+            <EntityTypeMapping TypeName="lutasModel.Partida">
+              <MappingFragment StoreEntitySet="Partida">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="idPerdedor" ColumnName="idPerdedor" />
+                <ScalarProperty Name="IdVencedor" ColumnName="IdVencedor" />
+                <ScalarProperty Name="DataPartida" ColumnName="DataPartida" />
+                <ScalarProperty Name="IdLutadorCasa" ColumnName="IdLutadorCasa" />
+                <ScalarProperty Name="IdLutadorVisitante" ColumnName="IdLutadorVisitante" />
+                <ScalarProperty Name="PontosVencedor" ColumnName="PontosVencedor" />
+                <ScalarProperty Name="PontosPerdedor" ColumnName="PontosPerdedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

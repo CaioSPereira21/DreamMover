@@ -1,0 +1,213 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+:root {
+    /* ===== Colors ===== */
+    --primary-color: #000000;
+    --secundary-color: #A10000;
+    --panel-color: #FFF;
+    --text-color: #000;
+    --black-light-color: #707070;
+    --border-color: #e6e5e5;
+    --toggle-color: #DDD;
+    --box1-color: #51BFFF;
+    --box2-color: #FFCF51;
+    --box3-color: #FF5151;
+    --title-icon-color: #fff;
+    /* ====== Transition ====== */
+    --tran-05: all 0.5s ease;
+    --tran-03: all 0.3s ease;
+    --tran-03: all 0.2s ease;
+}
+/* === Custom Scroll Bar CSS === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--secundary-color);
+    }
+/* === Custom Scroll Bar CSS === */
+
+.cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 5px;
+    justify-content: space-around;
+}
+
+
+    .cards .card {
+        width: calc(100% / 4 - 15px);
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        margin: 10px 0px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        transition: all 0.4s ease;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .cards .card::before {
+            content: '';
+            position: absolute;
+            width: 170%;
+            height: 160%;
+            background: linear-gradient(#FF4773,#2b8bc8);
+            animation: animate 2s linear infinite;
+        }
+
+        .cards .card:after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: #FFF;
+        }
+
+        .cards .card:hover {
+            transform: translateY(-15px);
+        }
+
+        .cards .card .content {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .cards .card .details {
+            width: 100%;
+        }
+
+        .cards .card .content .img {
+            height: 180px;
+            width: 180px;
+            margin-top: 16px;
+        }
+
+            .cards .card .content .img img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+
+        .cards .card .content .name {
+            font-size: 20px;
+            font-weight: bold;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+/* === Start Box CSS === */
+.boxes {
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    padding: 15px 20px;
+    background-color: var(--primary-color);
+    transition: var(--tran-05);
+    margin: 5px 0 5px 0;
+}
+
+    .box i {
+        font-size: 35px;
+        color: #FFF;
+    }
+
+    .box .text {
+        white-space: nowrap;
+        font-size: 18px;
+        font-weight: 500;
+        color: #FFF;
+    }
+
+    .box .number {
+        font-size: 40px;
+        font-weight: 500;
+        color: #FFF;
+    }
+
+    .box:hover {
+        transform: scale(0.98);
+        background-color: var(--secundary-color);
+    }
+/* === End Box CSS === */
+
+.experienceBar {
+    background-color: var(--primary-color);
+    color: #FFF;
+    border-radius: 10px;
+    padding: 12px;
+    white-space: nowrap;
+    position: relative;
+}
+
+.experienceBarLabel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFF;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.experienceBarLevel {
+    font-weight: bold;
+    color: var(--secundary-color);
+}
+
+.cardRival {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: 5px 0px;
+    padding: 5px;
+    transition: all 0.4s ease;
+}
+
+    .cardRival:hover {
+        transform: translateY(-5px);
+    }
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

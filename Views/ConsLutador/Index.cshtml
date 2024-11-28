@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Consultar Lutador";
+}
+
+<section id="consLutadorApp" class="content">
+    <div class="cards">
+        <div class="card" v-for="lutador in Lutadores" v-on:click.prevent="getDetalhesLutador(lutador)">
+            <div class="content">
+                <div class="details">
+                    <div class="name">{{lutador.Nome}}</div>
+                </div>
+                <img :src="lutador.Universo" style="width:40%;height:100px;object-fit:contain;margin:5px" />
+                <div class="img">
+                    <img :src="lutador.Stand" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-detalhes" class="modal fade" style="display: none;" data-backdrop="static">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div style="text-transform:uppercase;font-weight:600;display:flex;flex-direction:column">
+                                <div style="display: flex; align-items: center; justify-content:space-between;margin-bottom:2px">
+                                    <img :src="Lutador.Portrait" style="width:32px;height:32px;border-radius:50%" />
+                                    <span v-if="Lutador.Nome">{{ Lutador.Nome.length > 10 ? Lutador.Nome.slice(0, 10) + '...' : Lutador.Nome }}</span>
+                                    <span style="color:#FFF;background-color:#000;border-radius:50%;padding:3px;">{{Lutador.Nivel}}<label style="color:gold;margin-bottom:0px">★</label></span>
+                                </div>
+                                <div style="background-color: var(--secundary-color); width: 200px; border-radius: 10px; position: relative;">
+                                    <div class="experienceBar" :style="{width: (Lutador.Exp / (Lutador.Nivel * 1000)) * 100 + '%'}"></div>
+                                    <span class="experienceBarLabel">{{Lutador.Exp}} / {{Lutador.Nivel * 1000}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="box">
+                                    <span class="text">Vitórias</span>
+                                    <span class="number">{{Lutador.Vitorias}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="box">
+                                    <span class="text">Derrotas</span>
+                                    <span class="number">{{Lutador.Derrotas}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="box">
+                                    <span class="text">Partidas</span>
+                                    <span class="number">{{Lutador.Partidas}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="d-flex align-items-center" style="font-size: 20px; font-weight: bold; text-transform: uppercase;">
+                                <div style="flex-grow: 1; overflow: hidden;">Rivais</div>
+                                <div class="input-group ml-2" style="max-width: 150px;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="padding: 0.375rem;">
+                                            <i class="fa fas fa-search"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" v-model="NomeRival" placeholder="Buscar..." style="font-size: 14px; height: 32px;">
+                                </div>
+                            </div>
+                            <div class="row" style="max-height:300px; overflow:auto; justify-content:space-between; margin-top: 10px;">
+                                <div v-for="rival in RivaisFiltrados" class="col-sm-6">
+                                    <div class="cardRival">
+                                        <div style="text-transform:uppercase;font-weight:600;display:flex;flex-direction:column">
+                                            <div style="display: flex; align-items: center; justify-content:space-between;margin-bottom:2px">
+                                                <img :src="rival.Portrait" style="width:32px;height:32px;border-radius:50%" />
+                                                <span v-if="rival.Nome">{{ rival.Nome.length > 6 ? rival.Nome.slice(0, 6) + '...' : rival.Nome }}</span>
+                                                <span style="color:#FFF;background-color:#000;border-radius:50%;padding:3px;">{{rival.Nivel}}<label style="color:gold;margin-bottom:0px">★</label></span>
+                                            </div>
+                                            <div>
+                                                <img :src="partida.IdVencedor == Lutador.Id ? '/Imagens/win.png' : '/Imagens/loss.png'" v-for="partida in rival.Partidas" style="margin-left:5px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<link rel="stylesheet" href="~/Content/css/Lutador.css">
+<script src="~/Content/js/Views/ConsLutador/Index.js"></script>

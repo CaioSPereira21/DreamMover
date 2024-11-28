@@ -1,0 +1,134 @@
+﻿@{
+    string path = HttpContext.Current.Request.Url.AbsolutePath;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DreamMover</title>
+
+    <!-- REQUIRED SCRIPTS -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Content/js/vue.js"></script>
+    <script src="~/Content/js/toastr.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/adminlte.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/moment-with-locales.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/vue-multiselect/dist/vue-multiselect.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/adminlte.css">
+    <link rel="stylesheet" href="~/Content/css/libranny.css">
+    <link href="~/Content/css/toastr.css" rel="stylesheet" />
+
+    <!-- Boxicons CDN Link --->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet' />
+
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa fa-bars"></i></a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar elevation-4" style="background-color:#242526">
+            <!-- Logo -->
+            <div class="brand-link">
+                <img src="~/Images/Logo.png" alt="Icon Logo" style="width:100%" class="elevation-1">
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a href="@Html.Raw(Url.Action("Index", "Home") + "")" @Html.Raw(path == "/Home" || path == "/" ? "class='nav-link active'" : "class='nav-link'")>
+                                <i class="nav-icon fa fa-home"></i>
+                                <p style="display:inline-block;text-align:center">Home</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='#' class="nav-link">
+                                <i class="bx bx-save nav-icon"></i>
+                                <p style="display:inline-block;text-align:center">
+                                    Cadastros
+                                    <i class="right fas fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display:none">
+                                <li class="nav-item">
+                                    <a href="@Html.Raw(Url.Action("Index", "CadLutador") + "")" class="nav-link">
+                                        <i class='bx bx-user-plus nav-icon'></i>
+                                        <p style="display:inline-block;text-align:center">Cadastrar Lutador</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Html.Raw(Url.Action("Index", "Partida") + "")" class="nav-link">
+                                        <i class='bx bx-user-plus nav-icon'></i>
+                                        <p style="display:inline-block;text-align:center">Cadastrar Partida</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href='#' class="nav-link">
+                                <i class='bx bx-search nav-icon'></i>
+                                <p style="display:inline-block;text-align:center">
+                                    Consultas
+                                    <i class="right fas fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display:none">
+                                <li class="nav-item">
+                                    <a href="@Html.Raw(Url.Action("Index", "ConsLutador") + "")" class="nav-link">
+                                        <i class='bx bx-user nav-icon'></i>
+                                        <p style="display:inline-block;text-align:center">Lutador</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+
+    </div>
+
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
