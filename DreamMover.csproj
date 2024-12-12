@@ -138,6 +138,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MatchStats.cs" />
+    <Compile Include="Helpers\MemoryReader.cs" />
+    <Compile Include="Helpers\MugenManager.cs" />
+    <Compile Include="Helpers\Program.cs" />
     <Compile Include="Models\DreamMoverEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

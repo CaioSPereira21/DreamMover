@@ -51,6 +51,24 @@ var appPartida = new Vue({
             else if (!self.LutadorVisitante)
                 self.LutadorVisitante = lutador;
         },
+        iniciarPartida() {
+            var self = this;
+
+            var lutadorCasa = self.LutadorCasa;
+            var lutadorVisitante = self.LutadorVisitante;
+
+            $.ajax({
+                type: "POST",
+                url: "/Partida/IniciarPartida",
+                data: { lutadorCasa, lutadorVisitante },
+                success: function (data) {
+
+                },
+                error: function () {
+
+                }
+            });
+        }
     },
     mounted: function () {
         var self = this;
