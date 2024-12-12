@@ -1,4 +1,4 @@
-# DreamMover
+# DreamMover (W.I.P)
 
 ## 📖 Descrição do Projeto  
 O **DreamMover** é uma aplicação desenvolvida em **C#** com o padrão **MVC**, utilizando **Vue.js** no front-end e **LINQ to Entities** para acesso e manipulação de dados. O objetivo principal do sistema é gerenciar os lutadores do jogo digital **M.U.G.E.N**, permitindo cadastrar lutadores, realizar lutas diretamente pela plataforma e coletar os resultados para ajustar os níveis dos personagens.
