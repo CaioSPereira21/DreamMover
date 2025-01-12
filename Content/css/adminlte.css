@@ -11,6 +11,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
+    --primary-color: #242526;
     --blue: #007bff;
     --indigo: #6610f2;
     --purple: #6f42c1;
@@ -2777,15 +2778,17 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #1B18A6;
-    border-color: #1B18A6;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
     box-shadow: none;
+    transition: all 0.3s ease;
 }
 
     .btn-primary:hover {
         color: #fff;
         background-color: #160C67;
         border-color: #160C67;
+        transform: scale(0.99);
     }
 
     .btn-primary:focus, .btn-primary.focus {
